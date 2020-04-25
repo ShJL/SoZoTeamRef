@@ -5,7 +5,6 @@ private:
     std::deque<std::pair<T, int>> Deque_;
     int Counter_ = 0;
     int CounterDeleted_ = 0;
-    const std::string EMPTY_QUEUE_ERROR = "EMPTY QUEUE EXCEPTION";
 
 public:
     void Push(T x) {
@@ -23,16 +22,10 @@ public:
     }
     
     T Get() const {
-        if (Queue_.empty()) {
-            throw EMPTY_QUEUE_ERROR;
-        }
         return Deque_.front().first;
     }
 
     void Pop() {
-        if (Queue_.empty()) {
-            throw EMPTY_QUEUE_ERROR;
-        }
         if (Deque_.front().second == CounterDeleted_) {
             Deque_.pop_front();
         }

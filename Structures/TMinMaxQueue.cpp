@@ -40,7 +40,7 @@ public:
         Queue_.pop();
     }
 
-    T Peek() const {
+    T Front() const {
         return Queue_.front();
     }
 };
@@ -60,7 +60,7 @@ int main() {
     cout << endl;
 
     for (int i = 0; i < n; i++) {
-        cout << minQueue.Get() << ' ' << minQueue.Peek() << endl;
+        cout << minQueue.Get() << ' ' << minQueue.Front() << endl;
         minQueue.Pop();
     }
 

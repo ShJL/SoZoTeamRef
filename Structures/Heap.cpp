@@ -17,7 +17,7 @@ private:
     }
 
     inline void Swap(T& a, T& b) __attribute__((always_inline)) {
-        T&& c = std::move(a);
+        T c = std::move(a);
         a = std::move(b);
         b = std::move(c);
     }

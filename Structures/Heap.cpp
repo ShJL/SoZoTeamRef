@@ -1,4 +1,4 @@
-template<int SIZE, typename T, bool Min = true>
+template <int SIZE, typename T, bool Min = true>
 class Heap {
 private:
     T arr[SIZE];
@@ -16,7 +16,7 @@ private:
         return (x << 1) + 2;
     }
 
-    inline void Swap(T& a, T& b) __attribute__((always_inline)) {
+    inline void Swap(T &a, T &b) __attribute__((always_inline)) {
         T c = std::move(a);
         a = std::move(b);
         b = std::move(c);
@@ -38,7 +38,8 @@ private:
     }
 
     inline void RankDown() __attribute__((always_inline)) {
-        if (itr == 0) return;
+        if (itr == 0)
+            return;
         itr--;
         Swap(arr[0], arr[itr]);
         int i = 0;
@@ -103,12 +104,18 @@ public:
         RankDown();
         return result;
     }
+    T peek() const {
+        if (itr == 0) {
+            throw "NO ELEMENTS EXCEPTION";
+        }
+        return arr[0];
+    }
     int size() const {
         return itr;
     }
 };
 
-// EXAMPLE 
+// EXAMPLE
 
 int main() {
     const int n = 100;

@@ -1,4 +1,5 @@
-template <int SIZE, typename T, bool Min = true> class Heap {
+template <int SIZE, typename T, bool Min = true>
+class Heap {
 private:
     T arr[SIZE];
     int itr = 0;

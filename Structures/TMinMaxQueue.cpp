@@ -60,7 +60,7 @@ int main() {
     cout << endl;
 
     for (int i = 0; i < n; i++) {
-        cout << minQueue.Max() << ' ' << minQueue.Peek() << endl;
+        cout << minQueue.Get() << ' ' << minQueue.Peek() << endl;
         minQueue.Pop();
     }
 

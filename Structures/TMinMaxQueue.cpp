@@ -10,7 +10,7 @@ private:
 public:
     void Push(T x) {
         if constexpr (Min) {
-            while (!Deque_.empty() && Deque_.back().first <= x) {
+            while (!Deque_.empty() && Deque_.back().first >= x) {
                 Deque_.pop_back();
             }
         } else {
@@ -21,8 +21,8 @@ public:
         Deque_.emplace_back(x, Counter_++);
         Queue_.push(x);
     }
-
-    T Max() const {
+    
+    T Get() const {
         if (Queue_.empty()) {
             throw EMPTY_QUEUE_ERROR;
         }

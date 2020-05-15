@@ -23,7 +23,7 @@ vector<pii> ConvexHull(vector<pii>& vec) {
     for (int i = 1; i < sz(vec); ++i) {
         const long long cp = Cross(Vector(pleft, vec[i]), Vector(vec[i], pright));
         if (cp < 0 || i + 1 == sz(vec)) {
-            while (down.size() > 1 && Cross(Vector(up[up.size() - 2], vec[i]), Vector(up[up.size() - 2], up.back())) <= 0) {
+            while (up.size() > 1 && Cross(Vector(up[up.size() - 2], vec[i]), Vector(up[up.size() - 2], up.back())) <= 0) {
                 up.pop_back();
             }
             up.push_back(vec[i]);

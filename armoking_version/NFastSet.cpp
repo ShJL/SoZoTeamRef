@@ -1,8 +1,4 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-
+namespace NFastSet {
 template<size_t Words>
 struct FastBitset : public _Base_bitset<Words> {
     const static int bit = log2(sizeof(unsigned long) * 8);
@@ -150,30 +146,4 @@ struct FastSet {
     }
 };
 
-mt19937 rnd(123);
-
-int main() {
-    const int n = 1e6;
-    set<int> st1;
-    FastSet<n> st2;
-
-    vector<int> data;
-    vector<int> rem;
-    const int m = 3e8;
-    for (int i = 0; i < m; i++) {
-        data.push_back(rnd() % n);
-        rem.push_back(rnd() % n);
-    }
-
-    auto start = clock();
-    size_t sum = 0;
-    for (int i = 0; i < m; i++) {
-        int it = st2.lower_bound(data[i]);
-        sum += min<size_t>(it, n);
-        st2.insert(data[i]);
-        st2.erase(rem[i]);
-    }
-    cout << sum << endl;
-    cout << (1000.0 * (clock() - start) / CLOCKS_PER_SEC) << endl;
-
-}
+} // namespace NFastSet;

@@ -1,3 +1,4 @@
+namespace NConvexHull {
 struct pt {
     ll x, y;
     pt(ll x, ll y) : x(x), y(y) {}
@@ -52,3 +53,4 @@ vector<pt> ConvexHull (vector<pt> arr) {
     }
     return ans;
 }
+};

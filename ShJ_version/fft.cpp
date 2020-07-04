@@ -9,7 +9,6 @@ constexpr int kMaxN = 1 << kLogN;
 bool g_is_inited = false;
 
 Complex rootw[kMaxN];
-Complex dp[kMaxN];
 int logn[kMaxN];
 int rev[kMaxN];
 
@@ -30,20 +29,19 @@ void Init() {
 void FFT(std::vector<Complex>& arr, int power) {
     const int size = 1 << power;
     for (int i = 0; i < size; ++i) {
-        dp[rev[i] >> (kLogN - power)] = arr[i];
+        if (i < (rev[i] >> (kLogN - power))) {
+            std::swap(arr[i], arr[rev[i] >> (kLogN - power)]);
+        }
     }
     for (int d = 0; d < power; ++d) {
         const int len = 1 << d;
         for (int i = 0; i < size; i += len << 1) {
             for (int j = 0; j < len; ++j) {
-                auto delta = dp[i + len + j] * rootw[j << (kLogN - d - 1)];
-                dp[i + len + j] = dp[i + j] - delta;
-                dp[i + j] += delta;
+                auto delta = arr[i + len + j] * rootw[j << (kLogN - d - 1)];
+                arr[i + len + j] = arr[i + j] - delta;
+                arr[i + j] += delta;
             }
         }
-    }
-    for (int i = 0; i < size; ++i) {
-        arr[i] = dp[i];
     }
 }
 

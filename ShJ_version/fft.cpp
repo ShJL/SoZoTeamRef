@@ -16,9 +16,8 @@ int rev[kMaxN];
 void Init() {
     rootw[0] = 1;
     logn[0] = -1;
-    auto root = Complex(std::cos(kPi / (kMaxN >> 1)), std::sin(kPi / (kMaxN >> 1)));
     for (int i = 1; i < kMaxN; ++i) {
-        rootw[i] = rootw[i - 1] * root;
+        rootw[i] = Complex(std::cos(i * kPi / (kMaxN >> 1)), std::sin(i * kPi / (kMaxN >> 1)));
         logn[i] = logn[i >> 1] + 1;
         rev[i] = rev[i ^ (1 << logn[i])] | (1 << (kLogN - logn[i] - 1));
     }

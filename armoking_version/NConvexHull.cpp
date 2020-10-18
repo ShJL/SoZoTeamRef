@@ -10,7 +10,7 @@ struct pt {
     }
     ll operator * (const pt& o) const {
         return x * o.x + y * o.y;
-    }.
+    }
     bool operator < (const pt& o) const {
         return x < o.x || x == o.x && y < o.y;
     }
